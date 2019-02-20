@@ -1,8 +1,10 @@
-package com.breez.retrofit;
+package com.breez.retrofit.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.breez.retrofit.R;
+import com.breez.retrofit.Service;
 import com.breez.retrofit.model.DataModel;
 import com.breez.retrofit.model.Result;
 
@@ -14,7 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity  implements Callback<DataModel>{
+public class MainActivity extends AppCompatActivity implements Callback<DataModel> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,17 +25,17 @@ public class MainActivity extends AppCompatActivity  implements Callback<DataMod
         getRecipe();
     }
 
-    private void getRecipe(){
-        Call<Object> call = Service.getApi().getRecipe();
-        call.enqueue(new Callback<Object>() {
+    private void getRecipe() {
+        Call<DataModel> call = Service.getApi().getRecipe();
+        call.enqueue(new Callback<DataModel>() {
             @Override
-            public void onResponse(Call<Object> call, Response<Object> response) {
+            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
                 response.body().toString();
             }
 
             @Override
-            public void onFailure(Call<Object> call, Throwable t) {
-t.getMessage();
+            public void onFailure(Call<DataModel> call, Throwable t) {
+                t.getMessage();
             }
         });
     }

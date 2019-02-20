@@ -7,5 +7,5 @@ import retrofit2.http.GET;
 
 public interface Api {
     @GET("?i=onions")
-    public Call<Object> getRecipe();
+    public Call<DataModel> getRecipe();
 }
